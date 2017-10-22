@@ -31,6 +31,22 @@ for i in range(k-2):
 			break
 block_vec.append(n-sum_cnt)
 print (block_vec)
-print (Pref_mat.tolist())
+#print (Pref_mat.tolist())
 g=ig.Graph.SBM(n,Pref_mat.tolist(),block_vec)
-ig.plot(g)
+
+#Label m vertices as blue, other as pink
+m=10
+r=3 #5 Hops
+g.vs["color"]=["pink" if i<m else "red" if i<min_commsize else "blue" for i in range(n)]
+'''Wt assignment
+#print (g.get_shortest_paths(g.vs[100],g.vs[0:10]))
+#print ([1 if len(x)<4 else 0 for x in g.get_shortest_paths(g.vs[100],g.vs[0:10])])
+#print (sum([1 if len(x)<4 else 0 for x in g.get_shortest_paths(g.vs[100],g.vs[0:10])]))
+less than r hops
+'''
+g.vs["side_info_wt"]=[sum([1 if len(x)<r else 0 for x in g.get_shortest_paths(g.vs[i],g.vs[0:10])]) for i in range(n)]
+
+
+#ig.summary(g
+
+#ig.plot(g)
