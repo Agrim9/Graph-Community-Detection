@@ -2,7 +2,7 @@
 import igraph as ig
 import numpy as np
 import random
-
+from community_search import community_search 
 n=1000
 k=8
 alpha_min=0.1
@@ -44,9 +44,10 @@ g.vs["color"]=["pink" if i<m else "red" if i<min_commsize else "blue" for i in r
 #print (sum([1 if len(x)<4 else 0 for x in g.get_shortest_paths(g.vs[100],g.vs[0:10])]))
 less than r hops
 '''
-g.vs["side_info_wt"]=[sum([1 if len(x)<r else 0 for x in g.get_shortest_paths(g.vs[i],g.vs[0:10])]) for i in range(n)]
-
-
+w=[sum([1 if len(x)<r else 0 for x in g.get_shortest_paths(g.vs[i],g.vs[0:10])]) for i in range(n)]
+g.vs["side_info_wt"]=w
+X=g.get_adjacency()
+community_search(np.matrix(X),k,w,0.1,n)
 #ig.summary(g
-
 #ig.plot(g)
+
