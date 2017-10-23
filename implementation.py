@@ -7,7 +7,7 @@ n=1000
 k=5
 alpha_min=0.1
 q=0.01
-p=0.5
+p=0.3
 
 #get Pref Matrix, i*p 
 Pref_mat=np.matrix(p*np.identity(k)+q*(np.ones(shape=(k,k))-np.identity(k)))
@@ -44,7 +44,7 @@ r=3 #5 Hops
 less than r hops
 '''
 w=[sum([1 if len(x)<r else 0 for x in g.get_shortest_paths(g.vs[i],g.vs[0:m])]) for i in range(n)]
-#print(w[::4])
+print(w[::4])
 
 g.vs["side_info_wt"]=w
 X_list=g.get_adjacency()
@@ -53,8 +53,18 @@ for i in range(1,n):
 	X_arr=np.vstack([X_arr,X_list[i]])
 X=np.matrix(X_arr)
 #
-nodes_in_V1=community_search(X,k,w,0.001,n)
-g.vs["color"]=["red" if  nodes_in_V1[i]==1 else "blue" for i in range(nodes_in_V1.size)]
+colors=["red","green","yellow","black","grey","red","green","yellow","black","grey"]
+color_vec=[]
+for count in range(1):
+	nodes_in_V1=community_search(X,k,w,0.001,n)
+	if(count==0):
+		color_vec=[colors[count] if nodes_in_V1[i]==1 else "blue" for i in range(nodes_in_V1.size)]
+	else:
+		for i in range(nodes_in_V1.size):
+			if((nodes_in_V1[i]==1) and (color_vec[i]=="blue")):
+				color_vec[i]=colors[count]
+
+g.vs["color"]=color_vec
 ig.plot(g)
 #ig.summary(g
 

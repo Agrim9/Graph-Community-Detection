@@ -45,8 +45,8 @@ def community_search(X,k,w,th,n):
 	for i in range(P4.size):
 		if(Vp4[i]==1):
 			nodes_in_V1[P4[i]]=1
-	print (np.count_nonzero(Vp1)+np.count_nonzero(Vp2)+np.count_nonzero(Vp3)+np.count_nonzero(Vp4))	
-	print (nodes_in_V1)
+	#print (np.count_nonzero(Vp1)+np.count_nonzero(Vp2)+np.count_nonzero(Vp3)+np.count_nonzero(Vp4))	
+	#print (nodes_in_V1)
 	return nodes_in_V1
 
 def PreProcess(P1,P2,P3,P4,n1,n2,n3,n4,X,w,k,th):
