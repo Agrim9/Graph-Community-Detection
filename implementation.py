@@ -46,8 +46,13 @@ less than r hops
 '''
 w=[sum([1 if len(x)<r else 0 for x in g.get_shortest_paths(g.vs[i],g.vs[0:10])]) for i in range(n)]
 g.vs["side_info_wt"]=w
-X=g.get_adjacency()
-community_search(np.matrix(X),k,w,0.1,n)
+X_list=g.get_adjacency()
+X_arr=np.array(X_list[0])
+for i in range(1,n):
+	X_arr=np.vstack([X_arr,X_list[1]])
+X=np.matrix(X_arr)
+#print (X.shape)
+community_search(X,k,w,0.1,n)
 #ig.summary(g
 #ig.plot(g)
 
