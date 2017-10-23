@@ -35,7 +35,7 @@ print (block_vec)
 g=ig.Graph.SBM(n,Pref_mat.tolist(),block_vec)
 
 #Label m vertices as blue, other as pink
-m=20
+m=10
 r=3 #5 Hops
 '''Wt assignment
 #print (g.get_shortest_paths(g.vs[100],g.vs[0:10]))
@@ -44,6 +44,8 @@ r=3 #5 Hops
 less than r hops
 '''
 w=[sum([1 if len(x)<r else 0 for x in g.get_shortest_paths(g.vs[i],g.vs[0:m])]) for i in range(n)]
+#print(w[::4])
+
 g.vs["side_info_wt"]=w
 X_list=g.get_adjacency()
 X_arr=np.array(X_list[0])

@@ -9,13 +9,13 @@ def community_search(X,k,w,th,n):
 	#Partition nodes into four sets P1, P2, P3, P4 at random.Let ni=|Pi|
 	indice_vec=np.array(range(n))
 	random.shuffle(indice_vec)
-	place_holder1=random.randint(10,n-30)
-	place_holder2=random.randint(place_holder1+10,n-20)
-	place_holder3=random.randint(place_holder2+10,n-10)
+	#place_holder1=random.randint(10,n-30)
+	#place_holder2=random.randint(place_holder1+10,n-20)
+	#place_holder3=random.randint(place_holder2+10,n-10)
 
-	#place_holder1=n//4
-	#place_holder2=n//2
-	#place_holder3=3*n//4
+	place_holder1=n//4
+	place_holder2=n//2
+	place_holder3=3*n//4
 
 
 	P1=indice_vec[0:place_holder1]
