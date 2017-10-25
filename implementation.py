@@ -55,7 +55,7 @@ X=np.matrix(X_arr)
 #
 colors=["red","green","yellow","black","grey","red","green","yellow","black","grey"]
 color_vec=[]
-for count in range(1):
+for count in range(5):
 	nodes_in_V1=community_search(X,k,w,0.001,n)
 	if(count==0):
 		color_vec=[colors[count] if nodes_in_V1[i]==1 else "blue" for i in range(nodes_in_V1.size)]
@@ -68,3 +68,6 @@ g.vs["color"]=color_vec
 ig.plot(g)
 #ig.summary(g
 
+# Reduction of Type 2 error:
+	# Reduce threshold successively
+	# Better side info 
