@@ -52,13 +52,18 @@ X_arr=np.array(X_list[0])
 for i in range(1,n):
 	X_arr=np.vstack([X_arr,X_list[i]])
 X=np.matrix(X_arr)
-#
+#g.vs["color"]=["red" if i>(m-1) else "pink" for i in range(n)]
+#ig.plot(g)
+
+
 colors=["red","green","yellow","black","grey","red","green","yellow","black","grey"]
 color_vec=[]
 for count in range(5):
-	nodes_in_V1=community_search(X,k,w,0.001,n)
+	nodes_in_V1=community_search(X,k,w,0.0012,n)
 	if(count==0):
 		color_vec=[colors[count] if nodes_in_V1[i]==1 else "blue" for i in range(nodes_in_V1.size)]
+		g.vs["color"]=color_vec
+		ig.plot(g)
 	else:
 		for i in range(nodes_in_V1.size):
 			if((nodes_in_V1[i]==1) and (color_vec[i]=="blue")):
@@ -66,8 +71,5 @@ for count in range(5):
 
 g.vs["color"]=color_vec
 ig.plot(g)
-#ig.summary(g
+ig.summary(g)
 
-# Reduction of Type 2 error:
-	# Reduce threshold successively
-	# Better side info 

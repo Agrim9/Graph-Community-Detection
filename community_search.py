@@ -26,7 +26,7 @@ def community_search(X,k,w,th,n):
 	n2=place_holder2-place_holder1
 	n3=place_holder3-place_holder2
 	n4=n-place_holder3
-	print ("N1 is " + str(n1)+" N2 is " + str(n2)+" N3 is " + str(n3)+" N4 is " + str(n4))
+	#print ("N1 is " + str(n1)+" N2 is " + str(n2)+" N3 is " + str(n3)+" N4 is " + str(n4))
 	
 	nodes_in_V1=np.zeros(n)
 	Vp1=PreProcess(P1,P2,P3,P4,n1,n2,n3,n4,X,w,k,th)
